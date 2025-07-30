@@ -1,6 +1,6 @@
 ## Dynamic Investment Portfolio
 
-![alt text](/https://github.com/varad64/nextjs-dashboard/blob/portfolio/app/assets/portfolio%20screen.png)
+![alt text](/app/assets/portfolio%20screen.png?raw=true)
 
 This project is a dynamic investment portfolio dashboard built using react and next.js
 The project structure is as below:
