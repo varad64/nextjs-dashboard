@@ -86,3 +86,14 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export interface Stock {
+  name: string,
+  sector: string,
+  purchasePrice: number,
+  quantity: number,
+  exchange: string,
+  cmp: number,
+  pe_ratio: number,
+  latestEarnings: string,
+};

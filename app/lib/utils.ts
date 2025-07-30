@@ -7,6 +7,13 @@ export const formatCurrency = (amount: number) => {
   });
 };
 
+export const formatStockCurrency = (amount: number) => {
+  return (amount).toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'INR',
+  });
+};
+
 export const formatDateToLocal = (
   dateStr: string,
   locale: string = 'en-US',
