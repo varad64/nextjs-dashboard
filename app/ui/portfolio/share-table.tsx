@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { BanknotesIcon } from '@heroicons/react/24/outline';
-import { formatCurrency, formatStockCurrency } from '@/app/lib/utils';
+import { formatStockCurrency } from '@/app/lib/utils';
 
 type Stock = {
     symbol: string,
@@ -237,7 +237,7 @@ export default function LivePortfolio() {
                         </thead>
                         <tbody className="bg-white">
                         {Object.entries(sortedGroupStocks).map(([sector, sectorStocks]) => (
-                                <>
+                                <Fragment key={sector}>
                                 {/* Sector Heading Row */}
                                 <tr className="bg-gray-100 text-left text-sm font-semibold text-gray-700">
                                   <td colSpan={11} className="py-2 px-4">{`Sector: ${sector}`}</td>
@@ -314,66 +314,8 @@ export default function LivePortfolio() {
                                 </td>
                                 </tr>
                                 ))}
-                                </>
+                                </Fragment>
                         ))}
-                        {/* stocks?.filter((stock): stock is NonNullable<typeof stock> => stock != null).map((stock) => (
-                            <tr
-                            key={stock.symbol}
-                            className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                            >
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex items-center gap-3">
-                                <p>{stock.symbol.endsWith('NS') ? stock.symbol.slice(0, -3) : stock.symbol}</p>
-                                </div>
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {stock.sector}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {stock.purchasePrice.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {stock.quantity}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {stock.cmp?.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                {stock.exchange}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                {stock.pe?.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                {stock.earnings?.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap px-3 py-3">
-                                ${stock.invested?.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                ${stock.currentValue?.toFixed(2)}
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">   
-                                {(stock.currentValue > stock.invested) ? (
-                                    <span className="text-green-500">
-                                        ${stock.profitLoss?.toFixed(2)} ({(stock.profitLossPercentage).toFixed(2)}%)
-                                    </span> 
-                                 ) : (stock.currentValue < stock.invested)  ? (
-                                    <span className="text-red-500">
-                                         ${stock.profitLoss?.toFixed(2)} ({(stock.profitLossPercentage).toFixed(2)}%)
-                                    </span>
-                                 ) : (
-                                    <span className="text-gray-500">
-                                        {formatCurrency(0)} (0.00%)
-                                    </span>
-                                 )
-                                }
-                            </td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                {stock.portfolioPercentage?.toFixed(2)}%
-                            </td>
-                            </tr>
-                        ))} */}
                         </tbody>
                     </table>
             </div>

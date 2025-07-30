@@ -1,4 +1,4 @@
-import { mockPortfolio, userPortfolio } from './mock-data';
+import { userPortfolio } from './mock-data';
 import yahooFinance from 'yahoo-finance2';
 
 export async function fetchStocksData() {
@@ -49,23 +49,4 @@ export async function fetchStocksData() {
     );
   
     return shares;
-  
-    // const stocks = mockPortfolio.map((stock) => {
-    //   const purchasePrice = stock.purchasePrice / 100;
-    //   const cmp = stock.cmp / 100;
-    //   const investment = purchasePrice * stock.quantity;
-    //   const currentValue = cmp * stock.quantity;
-    //   const profitLoss = currentValue - investment;
-    //   const portfolioPercent = (investment / totalPortfolio) * 100;
-    //   console.log(purchasePrice, cmp, investment, currentValue);
-    //   return {
-    //     ...stock,
-    //     investment,
-    //     currentValue,
-    //     profitLoss,
-    //     portfolioPercent,
-    //   }
-    // });
-  
-    // return stocks;
   }
